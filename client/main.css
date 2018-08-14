@@ -1,4 +1,84 @@
 body {
-  padding: 10px;
   font-family: sans-serif;
+}
+
+#landing-img
+{
+  width: 100%;
+  min-height: 50vh;
+  max-height: 90vh;
+  height: auto;
+}
+
+.slide {
+	background-position: center center;
+	background-repeat: no-repeat;
+	padding-bottom: 65px;
+	padding-top: 50px;
+	text-align: center;
+}
+
+#slide-1 {
+	 background-image: url('./bg1.jpg');
+
+	color: #ffffff;
+	/* height: 100%; For some reason this doesnt work */
+    -webkit-background-size: 100%;
+    -moz-background-size: 100%;
+    -o-background-size: 100%;
+    background-size: 100%;
+
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    width: 100%;
+	background-attachment: relative;
+	background-position: center center;
+}
+
+#slide-1 h1 {
+	/* padding-top: 130px; */
+}
+@media (max-width: 991px) { 
+	#slide-1 {
+		background-position: 30% 20%;	
+	}
+}
+
+	#home-row-1 {
+		padding-top: 25px;
+	}
+	
+	#home-row-1 h1 {
+		font-size: 70px;
+	}
+	
+	#home-row-1 h4 {
+		font-size: 54px;
+	}
+
+
+@media (max-width: 767px) {
+	#home-row-1 {
+		padding-top: 16px;
+	}
+	
+	#home-row-1 h1 {
+		font-size: 35px;
+	}
+	
+	#home-row-1 h4 {
+		font-size: 21px;
+	}
+}
+
+.bg-pink {
+  background: #fff8f8;
+}
+
+.btn-danger {
+    color: #fff;
+    background-color: #f18181 !important;
+    border-color: #e6797a !important;
 }
