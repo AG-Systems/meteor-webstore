@@ -29,6 +29,13 @@ export default class Navbar extends Component {
                 </div>
               </li>
             </ul>
+            
+            <ul className="navbar-nav ml-auto">
+               <li className="nav-item active">
+                <Link className="nav-link" to="/cart"><i className="fas fa-shopping-cart" style={{ fontSize: "30px", color: "rgb(239, 89, 89)" }}></i></Link>
+              </li>           
+            </ul>
+            
           </div>
         </nav>
     );

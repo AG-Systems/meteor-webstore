@@ -23,5 +23,3 @@ Meteor.startup(() => {
 });
 
 
-$(".inital-fade").fadeIn();
-$(".last-fade").delay( 1000 ).fadeIn();

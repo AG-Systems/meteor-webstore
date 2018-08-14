@@ -14,22 +14,24 @@ class Home extends Component {
   
   renderBestSellers() {
     return this.props.products.map((product, index) => (
-      <div className="card" style={{ maxWidth: "300px", margin: "0 auto"}} key={index} >
-        <img className="card-img-top" src={ product.img[0] } alt="Card image cap" />
-        <div className="card-body">
-          <h4 className="card-title text-center">{ product.name }</h4>
-          <p className="card-text text-center">${ product.price }</p>
-            <div className="text-center">
-                <Link to={"/product/polish/" + product.url } className="btn btn-danger"> View Polish</Link>
-            </div>
+      <Link to={"/product/polish/" + product.url } key={index} style={{ textDecoration: "none", maxWidth: "300px", margin: "0 auto" }}>
+        <div className="card" style={{ maxWidth: "300px", margin: "0 auto"}}  >
+          <img className="card-img-top" src={ product.img[0] } alt="Card image cap" />
+          <div className="card-body">
+            <h4 className="card-title text-center text-dark">{ product.name }</h4>
+            <p className="card-text text-center text-dark">${ product.price }</p>
+              <div className="text-center">
+                <button className="btn btn-danger"> View Polish </button>
+              </div>
+          </div>
         </div>
-      </div>
+      </Link>
     ));
   }
   render() {
     return (
       <div>
-        <FadeIn delay={0} transitionDuration={0}>
+        <FadeIn delay={400} transitionDuration={0}>
         	<div className="slide story inital-fade" id="slide-1">
         		<div className="container">
         			<div id="home-row-1" className="row clearfix">
@@ -43,7 +45,7 @@ class Home extends Component {
         </FadeIn>
         <div className="bg-pink">
           <div style={{ width: "100%", height: "50px" }}></div>
-          <FadeIn delay={700}>
+          <FadeIn delay={800}>
       	    <div className="container-fluid last-fade">
       	      <div className="row">
       	        <div className="col-sm-4">
@@ -62,6 +64,7 @@ class Home extends Component {
       	     
   
               </div>
+              <div style={{ width: "100%", height: "50px" }}></div>
             </FadeIn>
           </div>
       </div>
