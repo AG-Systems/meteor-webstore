@@ -1,11 +1,18 @@
-import { Products } from '../api/products.js';
+import { Products } from '../imports/api/products.js';
 import { Meteor } from 'meteor/meteor';
 
 Meteor.startup(() => {
   if (Products.find().count() === 0) {
     [
-      {name: "Cherry Red", price: 6.50, description: "Beautiful cherry fruit red", img: [ "https://i.imgur.com/Dw0ZYjH.jpg", "https://i.imgur.com/a4fOhRf.png"], url: "cherry-red"},
-      {name: "Sara Yellow", price: 6.50, description: "Stunning flower like yellow like Sara", img: [""]}
+      {   name: "Cherry Red", 
+          price: 6.50, 
+          description: "Beautiful cherry fruit red", 
+          img: [ "./polish/essie1.jpg", "https://i.imgur.com/a4fOhRf.png"], 
+          url: "cherry-red",
+          newProduct: false,
+          bestSeller: true
+        
+      },
     ].forEach(function(product){
       Products.insert(product);
     });

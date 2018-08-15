@@ -43,7 +43,7 @@ class Home extends Component {
         		</div>
         	</div>
         </FadeIn>
-        <div className="bg-pink">
+        <div className="bg-pink" style={{ minWidth: "100vh", height: "auto" }}>
           <div style={{ width: "100%", height: "50px" }}></div>
           <FadeIn delay={800}>
       	    <div className="container-fluid last-fade">
