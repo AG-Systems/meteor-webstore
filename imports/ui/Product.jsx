@@ -13,6 +13,11 @@ import $ from 'jquery';
 
 class ProductPage extends Component {
   
+  constructor (props)
+  {
+    super(props);
+    this.addToCart = this.addToCart.bind(this);
+  };
   renderThumbnails() {
     return this.props.product[0].img.map((img, index) => (
           <div className="card" key={index} style={{ background: "transparent", border: "none", maxWidth: "80px" }}>
@@ -21,13 +26,30 @@ class ProductPage extends Component {
     ));
   }
   
-  componentDidMount() {
-    setTimeout(function () {
-        $("#product-page").animate({
-          background: "#ffffff !important"
-      }, 1000); 
-    }, 2000);
- 
+  addToCart()
+  {
+    
+
+    const productHash = this.props.product[0].url;
+    
+    if (localStorage && localStorage.getItem('app_cart')) 
+    {
+        let cart = JSON.parse(localStorage.getItem('app_cart'));
+        
+        console.log(cart);
+
+        cart.push( productHash, (1).toString() );
+
+        localStorage.setItem('app_cart', JSON.stringify(cart));
+        
+        
+    } else {
+      let cart = [];
+      cart.push( productHash, (1).toString() );
+      
+      localStorage.setItem('app_cart', JSON.stringify( cart ));
+    }
+    
   }
   
   render() {
@@ -35,10 +57,19 @@ class ProductPage extends Component {
     {
           const images = [
           this.props.product[0].img[0],
-          this.props.product[0].img[0],
+          this.props.product[0].img[1],
         ];
         const options = [
-          'Quantity: 1', 'Quantity: 2', 'Quantity: 3'
+          'Quantity: 1', 
+          'Quantity: 2', 
+          'Quantity: 3', 
+          'Quantity: 4', 
+          'Quantity: 5', 
+          'Quantity: 6', 
+          'Quantity: 7', 
+          'Quantity: 8',
+          'Quantity: 9', 
+          'Quantity: 10'
         ];
         
         const defaultOption = options[0];
@@ -62,7 +93,7 @@ class ProductPage extends Component {
                 <div className="col-sm-6">
                   <div className="jumbotron" style={{ background: "transparent", border: "none" }}>
                     <h1 className="display-4">{ this.props.product[0].name }</h1>
-                    <h6 className="display-6">${ this.props.product[0].price }</h6>
+                    <h6 className="display-6">${ this.props.product[0].priceStr }</h6>
                     <p className="lead">{ this.props.product[0].description }</p>
                     <hr className="my-4" />
                     <div>
@@ -70,7 +101,7 @@ class ProductPage extends Component {
                             <Dropdown options={options} onChange={this._onSelect} value={defaultOption} placeholder="Select an option" />
                         </div>
                         <div className="col-6" style={{ float: "right" }}>
-                           <button type="button" className="btn btn-outline-dark btn-md">Add to cart</button>
+                           <button type="button" className="btn btn-outline-dark btn-md" onClick={ this.addToCart }>Add to cart</button>
                         </div>
                     </div>
                   </div>

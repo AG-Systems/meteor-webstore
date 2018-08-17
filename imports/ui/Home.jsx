@@ -15,11 +15,11 @@ class Home extends Component {
   renderBestSellers() {
     return this.props.products.map((product, index) => (
       <Link to={"/product/polish/" + product.url } key={index} style={{ textDecoration: "none", maxWidth: "300px", margin: "0 auto" }}>
-        <div className="card" style={{ maxWidth: "300px", margin: "0 auto"}}  >
+        <div className="card mb-3" style={{ maxWidth: "300px", margin: "0 auto"}}  >
           <img className="card-img-top" src={ product.img[0] } alt="Card image cap" />
           <div className="card-body">
             <h4 className="card-title text-center text-dark">{ product.name }</h4>
-            <p className="card-text text-center text-dark">${ product.price }</p>
+            <p className="card-text text-center text-dark">${ product.priceStr }</p>
               <div className="text-center">
                 <button className="btn btn-danger"> View Polish </button>
               </div>
@@ -43,7 +43,7 @@ class Home extends Component {
         		</div>
         	</div>
         </FadeIn>
-        <div className="bg-pink" style={{ minWidth: "100vh", height: "auto" }}>
+        <div className="bg-pink" style={{ minHeight: "100vh", height: "auto" }}>
           <div style={{ width: "100%", height: "50px" }}></div>
           <FadeIn delay={800}>
       	    <div className="container-fluid last-fade">
@@ -77,6 +77,6 @@ export default withTracker(() => {
   Meteor.subscribe('products');
   
   return {
-    products: Products.find({}, { sort: { createdAt: -1 } }).fetch(),
+    products: Products.find({ bestSeller: true }, { sort: { createdAt: -1 } }).fetch(),
   };
 })(Home);

@@ -14,12 +14,15 @@ class Cart extends Component {
   
   
   render() {
+    
+    if( !localStorage.getItem('app_cart') )
+    {
       return (
           <div>
             <div className="container">
               <div className="row">
                 <div className="col-12">
-                    <div className="card mt-3" style={{ width: "18rem", margin: "0 auto" }}>
+                    <div className="card mt-5" style={{ width: "18rem", margin: "0 auto" }}>
                       <div className="card-body">
                         <h5 className="card-title text-center">Shopping cart is empty</h5>
                         <p className="card-text"></p>
@@ -30,6 +33,23 @@ class Cart extends Component {
             </div>
           </div>
       );
+    } else {
+      return ( 
+          <div>
+            <div className="container">
+              <div className="row">
+                <div className="col-12">
+                    <div className="card mt-5" style={{ width: "18rem", margin: "0 auto" }}>
+                      <div className="card-body">
+                      </div>
+                    </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        );
+    }
+    
     
   }
 }
@@ -40,7 +60,7 @@ export default withTracker(({ match }) => {
   
   
   return {
-    product: Products.find({  }).fetch(),
+    products: Products.find({  }).fetch(),
   };
   
 })(Cart);
